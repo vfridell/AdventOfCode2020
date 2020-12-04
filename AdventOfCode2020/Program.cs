@@ -10,7 +10,7 @@ namespace AdventOfCode2020
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            Day03.Part2();
+            Day04.Part2();
         }
     }
 }
