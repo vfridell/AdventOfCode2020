@@ -69,6 +69,28 @@ namespace AdventOfCode2020.Models
             return resultList;
         }
 
+        public List<Coordinate> GetCoordinates(PointIterationDirection direction = PointIterationDirection.UpDown)
+        {
+            List<Coordinate> resultList = new List<Coordinate>();
+            if (direction == PointIterationDirection.UpDown)
+            {
+                for (int c = X; c < X + Width; c++)
+                {
+                    for (int r = Y; r < Y + Height; r++)
+                        resultList.Add(new Coordinate(r, c));
+                }
+            }
+            else
+            {
+                for (int r = Y; r < Y + Height; r++)
+                {
+                    for (int c = X; c < X + Width; c++)
+                        resultList.Add(new Coordinate(r, c));
+                }
+            }
+            return resultList;
+        }
+
         public override bool Equals(object obj)
         {
             Rect other = obj as Rect;
