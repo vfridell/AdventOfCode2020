@@ -47,15 +47,14 @@ namespace AdventOfCode2020.Models
 
         public enum PointIterationDirection { LeftRight, UpDown };
 
-        public List<Point> GetPoints(PointIterationDirection direction = PointIterationDirection.UpDown)
+        public IEnumerable<Point> GetPoints(PointIterationDirection direction = PointIterationDirection.UpDown)
         {
-            List<Point> resultList = new List<Point>();
             if (direction == PointIterationDirection.UpDown)
             {
                 for (int x = X; x < X + Width; x++)
                 {
                     for (int y = Y; y < Y + Height; y++)
-                        resultList.Add(new Point(x, y));
+                        yield return new Point(x, y);
                 }
             }
             else
@@ -63,21 +62,19 @@ namespace AdventOfCode2020.Models
                 for (int y = Y; y < Y + Height; y++)
                 {
                     for (int x = X; x < X + Width; x++)
-                        resultList.Add(new Point(x, y));
+                        yield return new Point(x, y);
                 }
             }
-            return resultList;
         }
 
-        public List<Coordinate> GetCoordinates(PointIterationDirection direction = PointIterationDirection.UpDown)
+        public IEnumerable<Coordinate> GetCoordinates(PointIterationDirection direction = PointIterationDirection.UpDown)
         {
-            List<Coordinate> resultList = new List<Coordinate>();
             if (direction == PointIterationDirection.UpDown)
             {
                 for (int c = X; c < X + Width; c++)
                 {
                     for (int r = Y; r < Y + Height; r++)
-                        resultList.Add(new Coordinate(r, c));
+                        yield return new Coordinate(r, c);
                 }
             }
             else
@@ -85,10 +82,9 @@ namespace AdventOfCode2020.Models
                 for (int r = Y; r < Y + Height; r++)
                 {
                     for (int c = X; c < X + Width; c++)
-                        resultList.Add(new Coordinate(r, c));
+                        yield return new Coordinate(r, c);
                 }
             }
-            return resultList;
         }
 
         public override bool Equals(object obj)
